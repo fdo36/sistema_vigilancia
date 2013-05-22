@@ -1,0 +1,25 @@
+<h1>Listing camaras</h1>
+
+<table>
+  <tr>
+    <th>Ubicacion</th>
+    <th>Url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @camaras.each do |camara| %>
+  <tr>
+    <td><%= camara.ubicacion %></td>
+    <td><%= camara.url %></td>
+    <td><%= link_to 'Show', camara %></td>
+    <td><%= link_to 'Edit', edit_camara_path(camara) %></td>
+    <td><%= link_to 'Destroy', camara, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Camara', new_camara_path %>

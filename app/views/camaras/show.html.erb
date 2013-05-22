@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ubicacion:</b>
+  <%= @camara.ubicacion %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @camara.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_camara_path(@camara) %> |
+<%= link_to 'Back', camaras_path %>

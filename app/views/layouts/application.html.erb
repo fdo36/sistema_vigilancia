@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>	
+  <title>SistemaVigilancia</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <div id="user_nav">
+    <% if user_signed_in? %>
+    	Sesión iniciada como <%= current_user.email %>
+    	<%= link_to "Cerrar sesión",  destroy_user_session_path %>
+    <% else %>
+    	<%= link_to "Iniciar sesión", new_user_session_path %>
+    <% end %>
+
+  </div>	
+
+<%= yield %>
+
+</body>
+</html>
