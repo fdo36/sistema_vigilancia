@@ -1,3 +1,5 @@
+<% if current_user && current_user.name == "Admin" %>
+
 <h1>Listing camaras</h1>
 
 <table>
@@ -23,3 +25,4 @@
 <br />
 
 <%= link_to 'New Camara', new_camara_path %>
+<% end %>

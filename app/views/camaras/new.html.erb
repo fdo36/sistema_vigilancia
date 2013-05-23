@@ -1,5 +1,7 @@
+<% if current_user && current_user.name == "Admin" %>
 <h1>New camara</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', camaras_path %>
+<% end %>

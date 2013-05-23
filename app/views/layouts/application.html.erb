@@ -12,10 +12,13 @@
 
   <div id="user_nav">
     <% if user_signed_in? %>
-    	Sesión iniciada como <%= current_user.email %>
+    	Sesión iniciada como <%= current_user.name %>
     	<%= link_to "Cerrar sesión",  destroy_user_session_path %>
+      <% if current_user.name == "Admin" %>
+    	  <%= link_to "Crear cuenta", new_user_registration_path %>
+      <% end %> 
     <% else %>
-    	<%= link_to "Iniciar sesión", new_user_session_path %>
+      <%= link_to "Iniciar sesión", new_user_session_path  %>
     <% end %>
 
   </div>	

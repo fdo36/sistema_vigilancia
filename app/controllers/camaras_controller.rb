@@ -1,4 +1,6 @@
 class CamarasController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show, :index]
+  
   # GET /camaras
   # GET /camaras.json
   def index

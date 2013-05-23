@@ -1,3 +1,4 @@
+<% if current_user && current_user.name == "Admin" %>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -13,3 +14,4 @@
 
 <%= link_to 'Edit', edit_camara_path(@camara) %> |
 <%= link_to 'Back', camaras_path %>
+<% ends %>
