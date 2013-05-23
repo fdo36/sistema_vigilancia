@@ -1,28 +1,36 @@
 <% if current_user && current_user.name == "Admin" %>
-
-<h1>Listing camaras</h1>
-
-<table>
-  <tr>
-    <th>Ubicacion</th>
-    <th>Url</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @camaras.each do |camara| %>
-  <tr>
-    <td><%= camara.ubicacion %></td>
-    <td><%= camara.url %></td>
-    <td><%= link_to 'Show', camara %></td>
-    <td><%= link_to 'Edit', edit_camara_path(camara) %></td>
-    <td><%= link_to 'Destroy', camara, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<%- model_class = Camara -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:ubicacion) %></th>
+      <th><%= model_class.human_attribute_name(:url) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @camaras.each do |camara| %>
+      <tr>
+        <td><%= link_to camara.id, camara_path(camara) %></td>
+        <td><%= camara.ubicacion %></td>
+        <td><%= camara.url %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_camara_path(camara), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      camara_path(camara),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
-
-<%= link_to 'New Camara', new_camara_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),new_camara_path,:class => 'btn btn-primary' %>
 <% end %>
