@@ -43,7 +43,7 @@ class CamarasController < ApplicationController
   # POST /camaras.json
   def create
     @camara = Camara.new(params[:camara])
-
+    
     respond_to do |format|
       if @camara.save
         format.html { redirect_to @camara, notice: 'Camara was successfully created.' }

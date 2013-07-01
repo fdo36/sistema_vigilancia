@@ -3,6 +3,7 @@ SistemaVigilancia::Application.routes.draw do
   devise_for :users
 
   resources :camaras
+
   resources :users
 
   root :to => "camaras#index"
