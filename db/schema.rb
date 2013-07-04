@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523013629) do
+ActiveRecord::Schema.define(:version => 20130704210521) do
 
   create_table "camaras", :force => true do |t|
     t.string   "ubicacion"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 20130523013629) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "camaras_users", :id => false, :force => true do |t|
+    t.integer "camara_id"
+    t.integer "user_id"
+  end
+
+  add_index "camaras_users", ["camara_id", "user_id"], :name => "index_camaras_users_on_camara_id_and_user_id"
+  add_index "camaras_users", ["user_id", "camara_id"], :name => "index_camaras_users_on_user_id_and_camara_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,5 +46,8 @@ ActiveRecord::Schema.define(:version => 20130523013629) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  add_foreign_key "camaras_users", "camaras", :name => "camaras_users_camara_id_fk"
+  add_foreign_key "camaras_users", "users", :name => "camaras_users_user_id_fk"
 
 end

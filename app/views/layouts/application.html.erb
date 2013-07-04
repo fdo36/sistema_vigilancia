@@ -28,7 +28,7 @@
           <% if current_user %>
             <% if current_user.name == "Admin" %>
               <li><%= link_to "Mantener cámaras", camaras_path%></li>  
-              <li><%= link_to "Crear cuenta", new_user_registration_path %></li>
+              <li><%= link_to "Crear cuenta", new_user_path %></li>
               <li><%= link_to "Agregar cámaras a cuentas", users_path %></li>
             <% else %>  
               <li><%= link_to "Ver cámaras"%></li>
