@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @camaras = Camara.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,12 +36,17 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @camaras = Camara.all
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @camaras = Camara.all
+    camara_ids = params[:camara_ids] if params[:camara_ids] 
+    camara_ids ||= []
+    @user.camara_ids = camara_ids
 
     respond_to do |format|
       if @user.save
@@ -57,6 +63,11 @@ class UsersController < ApplicationController
   # PUT /users/1.json
   def update
     @user = User.find(params[:id])
+
+    @camaras = Camara.all
+    camara_ids = params[:camara_ids] if params[:camara_ids] 
+    camara_ids ||= []
+    @user.camara_ids = camara_ids
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

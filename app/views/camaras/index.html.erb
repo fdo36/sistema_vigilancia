@@ -1,4 +1,4 @@
-<% if current_user and current_user.name == "Admin" %>
+<% if current_user %>
 <%- model_class = Camara -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @camaras.each do |camara| %>
+    <% current_user.camaras.each do |camara| %>
       <tr>
         <td><%= link_to camara.id, camara_path(camara) %></td>
         <td><%= camara.ubicacion %></td>
@@ -33,6 +33,4 @@
 </table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),new_camara_path,:class => 'btn btn-primary' %>
-<% elsif current_user %>
-  <h1>NO TIENE PERMISOS</h1>
 <% end %>
