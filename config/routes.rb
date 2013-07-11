@@ -10,6 +10,9 @@ SistemaVigilancia::Application.routes.draw do
   
 
   root :to => "camaras#index"
+  #devise_scope :user do
+  #	root to: "devise/sessions#new"
+  #end
 
   
 end
