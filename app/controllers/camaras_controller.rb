@@ -23,6 +23,15 @@ class CamarasController < ApplicationController
     end
   end
 
+  def show_one
+    @camara = Camara.where(:url => params[:url])
+    
+    respond_to do |format|
+      format.html
+    end
+    
+  end
+
   # GET /camaras/new
   # GET /camaras/new.json
   def new
