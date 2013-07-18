@@ -52,9 +52,13 @@ class CamarasController < ApplicationController
   # POST /camaras.json
   def create
     @camara = Camara.new(params[:camara])
-    
+
     respond_to do |format|
       if @camara.save
+
+        admin = User.find(2)
+        admin.camaras.push(@camara)
+
         format.html { redirect_to @camara, notice: 'Camara was successfully created.' }
         format.json { render json: @camara, status: :created, location: @camara }
       else

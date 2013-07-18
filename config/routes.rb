@@ -14,5 +14,7 @@ SistemaVigilancia::Application.routes.draw do
   #	root to: "devise/sessions#new"
   #end
 
+  resources :messages, only: [:index, :create]
+  match "contact" => "messages#index"
   
 end
